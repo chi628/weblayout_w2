@@ -1,0 +1,226 @@
+$white:#FFFFFF;
+$black:#000000;
+$darker-red:#891818;
+
+@mixin padding($pos, $px) {
+    @if($pos=='top') {
+        padding-top: $px;
+    }
+
+    @else if($pos=='left') {
+        padding-left: $px;
+    }
+
+    @else if($pos=='right') {
+        padding-right: $px;
+    }
+
+    @else if($pos=='bottom') {
+        padding-bottom: $px;
+    }
+}
+
+@mixin margin($pos, $px) {
+    @if($pos=='top') {
+        margin-top: $px;
+    }
+
+    @else if($pos=='left') {
+        margin-left: $px;
+    }
+
+    @else if($pos=='right') {
+        margin-right: $px;
+    }
+
+    @else if($pos=='bottom') {
+        margin-bottom: $px;
+    }
+}
+
+%dot {
+    background-color: $darker-red;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+html {
+    font-family: 'Roboto';
+    font-style: italic;
+}
+
+h2 {
+    // font-weight: medium;
+    font-size: 64px;
+    line-height: 75px;
+}
+
+.df {
+    display: flex;
+}
+
+.jc {
+    &-c {
+        justify-content: center;
+    }
+
+    &-sb {
+        justify-content: space-between;
+    }
+}
+
+.bg-black {
+    background-color: $black;
+}
+
+.txt-white {
+    color: $white;
+}
+
+.ta-c {
+    text-align: center;
+}
+
+.container {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+header {
+    // border: 1px solid red;
+    background-image: url('https://github.com/hexschool/webLayoutTraining1st/blob/master/week2/banner.png?raw=true');
+    background-position: center center;
+    width: 100%;
+    height: 960px;
+    align-items: center;
+
+    p {
+        font-weight: bold;
+        font-size: 24px;
+        line-height: 36px;
+    }
+
+    h1 {
+        font-weight: 900;
+        font-size: 80px;
+        line-height: 94px;
+    }
+
+    .icons {
+        @include margin(top, 48px);
+
+        li {
+            @include padding(left, 16px);
+        }
+    }
+}
+
+.about {
+    width: 412px;
+    margin: 0 auto;
+    @include padding(top, 64px);
+    @include padding(bottom, 56px);
+
+
+    img {
+        @include margin(top, 40px);
+    }
+
+    ul {
+        @include margin(top, 24px);
+        font-weight: bold;
+        font-size: 24px;
+        line-height: 36px;
+
+        li {
+            @include padding(top, 8px);
+        }
+    }
+
+    .experence {
+        @include margin(top, 24px);
+        @include margin(left, 14px);
+        @include margin(right, 14px);
+        border-top: 1px solid $black;
+
+        li {
+            @include margin(top, 32px);
+            position: relative;
+            line-height: 42px;
+
+            &::before {
+                content: '';
+                position: absolute;
+                margin-top: 10px;
+                margin-left: -38px;
+                @extend %dot;
+            }
+        }
+    }
+}
+
+.brand {
+    @include padding(top, 64px);
+    @include padding(bottom, 120px);
+
+    ul {
+        @include margin(top, 16px);
+        font-size: 20px;
+        line-height: 30px;
+
+        li {
+            @include padding(bottom, 32px);
+        }
+    }
+
+    .products {
+        @include margin(top, 36px);
+
+        img {
+            @include margin(bottom, 40px);
+        }
+    }
+}
+
+.works {
+    @include padding(top, 64px);
+    @include padding(bottom, 160px);
+
+    p {
+        @include margin(top, 24px);
+    }
+
+    ul {
+        @include margin(top, 56px);
+
+        li {
+            @include padding(right, 24px);
+        }
+    }
+}
+
+footer {
+    @include padding(top, 64px);
+    @include padding(bottom, 80px);
+    flex-direction: column;
+    align-items: center;
+    color: $white;
+
+    a {
+        color: $white;
+    }
+
+    ul {
+        li {
+            @include margin(top, 16px);
+        }
+    }
+}
